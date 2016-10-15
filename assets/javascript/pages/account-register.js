@@ -10,7 +10,8 @@
 
     Page.prototype.init = function() {
         this.$form = $('#accountRegisterForm')
-        this.activePlanId = null
+
+        this.setActivePlanFromPage()
     }
 
     Page.prototype.showPlanDetails = function(el) {
@@ -66,6 +67,15 @@
                 'plans/price-details': '#partialPlansPriceDetails'
             }
         })
+    }
+
+    Page.prototype.setActivePlanFromPage = function() {
+        var id = $('input[name=selected_plan]').val(),
+            $el = $('[data-plan-object][data-id='+(id ? id : 0)+']:first')
+
+        if ($el.length) {
+            this.selectPlan($el)
+        }
     }
 
     $.page = new Page();

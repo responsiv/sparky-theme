@@ -3,3 +3,7 @@ description: A starter template that implements subscription based payments.
 author: Responsiv Internet
 homepage: 'http://responsiv.com'
 code: ''
+require:
+    - RainLab.User
+    - Responsiv.Pay
+    - Responsiv.Subscribe
