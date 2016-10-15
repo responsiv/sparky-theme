@@ -1,0 +1,20 @@
+{% if plan.setup_price %}
+    <p>
+        <strong>Set up fee:</strong>
+        {{ plan.setup_price|currency }}
+    </p>
+{% endif %}
+<p>
+    <strong>Subscription:</strong>
+    {{ plan.price|currency }} / {{ plan.plan_type }}
+</p>
+{% if plan.total_tax %}
+    <p>
+        <strong>Tax:</strong>
+        {{ plan.total_tax|currency }}
+    </p>
+{% endif %}
+<p>
+    <strong>Total:</strong>
+    {{ plan.total_with_tax|currency }}
+</p>

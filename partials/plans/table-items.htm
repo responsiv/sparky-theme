@@ -1,0 +1,61 @@
+{% for plan in plans %}
+    <tr
+        class="plan-select-button"
+        data-plan-object
+        data-id="{{ plan.id }}"
+        data-name="{{ plan.name }}"
+        data-is-free="{{ plan.isFree ? 1 : 0 }}">
+        <!-- Plan name -->
+        <td>
+            <div class="btn-table-align">
+                <a href="javascript:;" onclick="$.page.showPlanDetails(this)">
+                    <strong>{{ plan.name }}</strong>
+                </a>
+            </div>
+        </td>
+
+        <!-- Plan features button -->
+        <td>
+            <button
+                class="btn btn-default m-l-sm"
+                onclick="$.page.showPlanDetails(this)"
+                type="button">
+                <i class="fa fa-btn fa-star-o"></i> Plan features
+            </button>
+        </td>
+
+        <!-- Plan price -->
+        <td>
+            <div class="btn-table-align">
+                {% if plan.isFree %}
+                    <span>Free</span>
+                {% else %}
+                    <span>{{ plan.price|currency }} / {{ plan.plan_type }}</span>
+                {% endif %}
+            </div>
+        </td>
+
+        <!-- Trial days -->
+        <td>
+            {% if plan.hasTrial %}
+                <div class="btn-table-align">
+                    {{ plan.policy.trial_period }} day trial
+                </div>
+            {% endif %}
+        </td>
+
+        <!-- Plan select button -->
+        <td>
+            <button type="button" class="btn btn-primary btn-plan" disabled>
+                <i class="fa fa-btn fa-check"></i> Selected
+            </button>
+
+            <button
+                type="button"
+                class="btn btn-primary-outline btn-plan"
+                onclick="$.page.selectPlan(this)">
+                Select
+            </button>
+        </td>
+    </tr>
+{% endfor %}

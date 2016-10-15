@@ -1,0 +1,92 @@
+{% if invoice %}
+
+    {% if invoice.isPaymentProcessed %}
+
+        <div class="payment-invoice-success">
+            <h4 class="text-success">
+                This invoice has been paid. Thank-you!
+            </h4>
+            <p>
+                View <a href="{{ invoice.url }}">invoice {{ invoice.getUniqueId }}</a>
+            </p>
+        </div>
+
+    {% else %}
+
+        <!-- Invoice header -->
+        <div class="payment-invoice-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                        {% if invoice.company %}<strong>{{ invoice.company }}</strong>{% endif %}<br />
+                        Attention: {{ invoice.first_name }} {{ invoice.last_name }}<br />
+                        {% if invoice.street_addr %}{{ invoice.street_addr }}<br />{% endif %}
+                        {% if invoice.city or invoice.zip %}{{ invoice.city }} {{ invoice.zip }}<br />{% endif %}
+                        {% if invoice.state %}{{ invoice.state.name }}, {% endif %}
+                        {% if invoice.country %}{{ invoice.country.name }}{% endif %}
+                        {% if invoice.phone %}<br />{{ invoice.phone }}{% endif %}
+                    </p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <h2>Invoice {{ invoice.getUniqueId }}</h2>
+                    <p>Date: {{ invoice.sent_at ? invoice.sent_at.toFormattedDateString }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Invoice table -->
+        <div class="payment-invoice">
+            <table class="table table-striped table-invoice">
+                <thead>
+                    <tr>
+                        <th class="item-description">Item</th>
+                        <th class="numeric">Price</th>
+                        <th class="numeric">Discount</th>
+                        <th class="numeric">Tax</th>
+                        <th class="numeric last">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in invoice.items %}
+                        <tr>
+                            <td>
+                                <div class="product_description">
+                                    {{ item.quantity }}x {{ item.description }}
+                                </div>
+                            </td>
+                            <td class="numeric">{{ item.price|currency }}</td>
+                            <td class="numeric">{{ item.discount|currency }}</td>
+                            <td class="numeric">{{ item.tax|currency }}</td>
+                            <td class="numeric last total">{{ item.total|currency }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-right">Subtotal</td>
+                        <td class="numeric total">{{ invoice.subtotal|currency }}</td>
+                    </tr>
+                    {% for tax in invoice.listSalesTaxes %}
+                        <tr>
+                            <td colspan="4" class="text-right" colspan="4">Sales tax ({{ tax.name }})</td>
+                            <td class="numeric total">{{ tax.total|currency }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr class="grand-total">
+                        <td class="blank">&nbsp;</td>
+                        <td class="text-right" colspan="3"><h4>Total</h4></td>
+                        <td class="numeric"><h4>{{ invoice.total|currency }}</h4></td>
+                    </tr>
+                </tfoot>
+            </table>​
+        </div>
+
+    {% endif %}
+
+{% else %}
+
+    <div class="payment-not-found">
+        <p>Sorry, that payment could not be found</p>
+    </div>
+
+{% endif %}

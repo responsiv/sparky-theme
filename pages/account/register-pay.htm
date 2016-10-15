@@ -1,0 +1,33 @@
+title = "Register Payment"
+url = "/register/pay/:hash"
+layout = "default"
+
+[payment]
+==
+
+<div class="spark-screen container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Payment details
+                </div>
+                <div class="panel-body">
+                    {% partial 'account/register-pay-invoice' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Payment details
+                </div>
+                <div class="panel-body">
+                    {% partial 'account/register-pay-method' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

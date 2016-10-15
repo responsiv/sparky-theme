@@ -1,0 +1,36 @@
+{% if invoice and not invoice.isPaymentProcessed %}
+    <div class="payment-methods">
+        {% if paymentMethods|length %}
+
+            <!-- Payment method -->
+            {% if paymentMethods|length > 1 %}
+                <h5>Please choose a payment method</h5>
+
+                {{ form_open() }}
+                    {% for type in paymentMethods %}
+                        <div class="radio">
+                            <label for="type{{ type.id }}">
+                                <input
+                                    id="type{{ type.id }}"
+                                    name="payment_method"
+                                    value="{{ type.id }}"
+                                    type="radio"
+                                    {{ type.id == invoice.payment_method_id ? 'checked' }}
+                                    data-request="onUpdatePaymentType"
+                                    data-request-update="'@payment_form': '#partialPaymentForm'"
+                                    />
+                                {{ type.name }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                {{ form_close() }}
+
+            {% endif %}
+
+            <!-- Payment form -->
+            <div id="partialPaymentForm">{% partial '@payment_form' %}</div>
+        {% else %}
+            <p>Whoops! There are not payment methods set up, please contact site support.</p>
+        {% endif %}
+    </div>
+{% endif %}

@@ -1,0 +1,78 @@
+<!-- Address -->
+<div class="form-group">
+    <label class="col-md-4 control-label">Address</label>
+
+    <div class="col-sm-6">
+        <input type="text" name="street_addr" class="form-control">
+    </div>
+</div>
+
+<!-- City -->
+<div class="form-group">
+    <label class="col-md-4 control-label">City</label>
+
+    <div class="col-sm-6">
+        <input type="text" name="city" class="form-control">
+    </div>
+</div>
+
+<!-- State & postcode -->
+<div class="form-group">
+    <label class="col-md-4 control-label">State / Postal code</label>
+
+    <!-- State -->
+    <div class="col-sm-3">
+        <input type="text" name="state_name" class="form-control" placeholder="State">
+    </div>
+
+    <!-- Postal code -->
+    <div class="col-sm-3">
+        <input type="text" name="zip" class="form-control" placeholder="Postal code">
+    </div>
+</div>
+
+<!-- Country -->
+<div class="form-group">
+    <label class="col-md-4 control-label">Country</label>
+
+    <div class="col-sm-6">
+        {{ form_select_country('country', null, {
+            emptyOption: '',
+            class: 'form-control',
+            onChange: '$.page.updatePlanPricing()'
+        }) }}
+    </div>
+</div>
+
+<!-- Tax / Price info -->
+<div class="form-group">
+    <label class="col-md-4 control-label">&nbsp;</label>
+
+    <div class="col-md-6">
+        <div id="partialPlansPriceDetails" class="alert alert-info plan-price-details">
+            {% partial 'plans/price-details' plan=null %}
+        </div>
+    </div>
+</div>
+
+<!-- Terms and conditions -->
+<div class="form-group">
+    <div class="col-md-6 col-md-offset-4">
+        By registering you agree to the <a href="{{ 'terms'|page }}" target="_blank">terms of service</a>
+    </div>
+</div>
+
+<!-- Register button -->
+<div class="form-group">
+    <div class="col-md-6 col-md-offset-4">
+        <button type="submit" class="btn btn-primary form-submit-btn">
+            <span>
+                <i class="fa fa-btn fa-spinner fa-spin"></i> Registering
+            </span>
+
+            <span>
+                <i class="fa fa-btn fa-check-circle"></i> Register
+            </span>
+        </button>
+    </div>
+</div>

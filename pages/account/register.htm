@@ -1,0 +1,34 @@
+title = "Register"
+url = "/register"
+layout = "default"
+
+[subscribePlanList]
+
+[subscribeRegister]
+paymentPage = "account/register-pay"
+==
+{% put scripts %}
+    <script src="{{ ['assets/javascript/pages/account-register.js']|theme }}"></script>
+{% endput %}
+{% put styles %}
+    <link href="{{ ['assets/less/pages/account-register.less']|theme }}" rel="stylesheet">
+{% endput %}
+
+{% set hasPlans = subscribePlanList.monthlyPlans or subscribePlanList.yearlyPlans %}
+
+<div class="spark-screen container">
+    {{ form_ajax('onRegister', { id: 'accountRegisterForm', class: 'form-horizontal' }) }}
+
+        <!-- Plan selection -->
+        {% if hasPlans %}
+            {% partial 'account/register-plans' %}
+        {% endif %}
+
+        <!-- Account details -->
+        {% partial 'account/register-common' %}
+
+        <!-- Billing details -->
+        {% partial 'account/register-billing' %}
+
+    {{ form_close() }}
+</div>

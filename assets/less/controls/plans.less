@@ -1,0 +1,32 @@
+.plan-feature-list li {
+    line-height: 35px;
+}
+
+.plan-select-button .btn-table-align a {
+    color: @text-color;
+    text-decoration: none;
+}
+
+.plan-select-button .btn-plan {
+    width: 150px;
+
+    &:first-child {
+        display: none;
+    }
+    &:last-child {
+        display: block;
+    }
+}
+
+.plan-select-button.plan-selected .btn-plan {
+    &:first-child {
+        display: block;
+    }
+    &:last-child {
+        display: none;
+    }
+}
+
+.plan-price-details {
+    margin: 0;
+}

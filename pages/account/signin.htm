@@ -1,0 +1,60 @@
+title = "Sign in"
+url = "/signin"
+layout = "default"
+==
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Sign in</div>
+
+                <div class="panel-body">
+                    {% partial 'site/errors' %}
+
+                    {{ form_open({ class: 'form-horizontal' }) }}
+                        <!-- Email address -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Email address</label>
+
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" value="{{ form_old('email') }}" autofocus>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                        </div>
+
+                        <!-- Remember me -->
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sign in -->
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa m-r-xs fa-sign-in"></i> Sign in
+                                </button>
+
+                                <a class="btn btn-link" href="{{ 'account/reset'|page }}">Forgot Your Password?</a>
+                            </div>
+                        </div>
+                    {{ form_close() }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+description = "Default layout"
+==
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% partial 'site/meta' %}
+    </head>
+    <body class="with-navbar">
+        <div id="spark-app">
+            {% if user %}
+                {% partial 'nav/user' %}
+            {% else %}
+                {% partial 'nav/guest' %}
+            {% endif %}
+
+            {% page %}
+
+            {% if user %}
+                {% partial 'modals/notifications' %}
+                {% partial 'modals/support' %}
+                {% partial 'modals/session-expired' %}
+            {% endif %}
+
+            {% partial 'site/scripts' %}
+        </div>
+    </body>
+</html>
