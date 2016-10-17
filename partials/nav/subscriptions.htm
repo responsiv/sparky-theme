@@ -1,0 +1,10 @@
+{% if user.onTrial %}
+    <!-- Trial reminder -->
+    <li class="dropdown-header">Trial</li>
+    <li>
+        <a href="{{ 'settings/subscription'|page }}">
+            <i class="fa fa-fw fa-btn fa-shopping-bag"></i> Subscribe
+        </a>
+    </li>
+    <li class="divider"></li>
+{% endif %}

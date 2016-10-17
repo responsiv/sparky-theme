@@ -1,6 +1,13 @@
 title = "Sign in"
 url = "/signin"
 layout = "default"
+
+[account]
+redirect = "dashboard"
+
+[session]
+redirect = "dashboard"
+security = "guest"
 ==
 <div class="container">
     <div class="row">
@@ -11,7 +18,7 @@ layout = "default"
                 <div class="panel-body">
                     {% partial 'site/errors' %}
 
-                    {{ form_open({ class: 'form-horizontal' }) }}
+                    {{ form_open({ request: 'onSignin', class: 'form-horizontal' }) }}
                         <!-- Email address -->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Email address</label>
@@ -27,17 +34,6 @@ layout = "default"
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password">
-                            </div>
-                        </div>
-
-                        <!-- Remember me -->
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember me
-                                    </label>
-                                </div>
                             </div>
                         </div>
 

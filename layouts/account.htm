@@ -1,6 +1,8 @@
-description = "Default layout"
+description = "User account pages"
 
 [session]
+security = "user"
+redirect = "account/signin"
 ==
 <!DOCTYPE html>
 <html lang="en">
@@ -9,11 +11,7 @@ description = "Default layout"
     </head>
     <body class="with-navbar">
         <div id="spark-app">
-            {% if user %}
-                {% partial 'nav/user' %}
-            {% else %}
-                {% partial 'nav/guest' %}
-            {% endif %}
+            {% partial 'nav/user' %}
 
             {% page %}
 

@@ -8,4 +8,14 @@
             {% endfor %}
         </ul>
     </div>
+{% else %}
+    {% flash error %}
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> Something went wrong!
+            <br><br>
+            <ul>
+                <li>{{ message }}</li>
+            </ul>
+        </div>
+    {% endflash %}
 {% endif %}
