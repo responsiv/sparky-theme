@@ -306,7 +306,8 @@
                 title: data.title || title || defaultSettings.title,
                 handler: data.handler || data,
                 partial: data.partial || null,
-                data: data.data || null
+                data: data.data || null,
+                element: data.element || document
             };
 
             if (data.handler) { $.extend(params, data); }
@@ -322,7 +323,7 @@
                 requestOpts.update[params.partial] = 'x_null'
             }
 
-            $.request(params.handler, requestOpts)
+            $(params.element).request(params.handler, requestOpts)
                 .success(ok)
                 .fail(error);
 
