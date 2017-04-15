@@ -6,14 +6,11 @@ layout = "default"
 
 [subscribeRegister]
 paymentPage = "account/register-pay"
-==
-{% put scripts %}
-    <script src="{{ ['assets/javascript/pages/account-register.js']|theme }}"></script>
-{% endput %}
-{% put styles %}
-    <link href="{{ ['assets/less/pages/account-register.less']|theme }}" rel="stylesheet">
-{% endput %}
 
+[resources]
+less[] = "pages/account-register.less"
+js[] = "pages/account-register.js"
+==
 {% set hasPlans = subscribePlanList.monthlyPlans or subscribePlanList.yearlyPlans %}
 
 <div class="spark-screen container">

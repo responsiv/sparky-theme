@@ -18,16 +18,12 @@
         var $el = $(el),
             plan = this.getPlanFromElement($el)
 
-        eModal.request({
+        $el.ajaxModal({
             handler: 'onGetPlan',
-            partial: 'plans/feature-list',
-            title: plan.name,
-            data: {
+            updatePartial: 'plans/feature-list',
+            extraData: {
                 selected_plan: plan.id
-            },
-            buttons: [
-                { text: 'Close', style: 'default', close: true }
-            ]
+            }
         })
     }
 
