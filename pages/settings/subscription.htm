@@ -1,0 +1,23 @@
+title = "Subscription"
+url = "/settings/subscription"
+layout = "settings"
+
+[subscribePlanList]
+
+[subscribeMembership]
+
+[resources]
+vars[activeSetting] = "subscription"
+==
+<div class="panel panel-default">
+    <div class="panel-heading">Update Subscription</div>
+
+    <div class="panel-body">
+
+        <!-- Plan selection -->
+        {% if hasPlans %}
+            {% partial 'account/register-plans' %}
+        {% endif %}
+
+    </div>
+</div>

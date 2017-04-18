@@ -34,8 +34,8 @@
         <div class="spark-settings-tabs">
             <ul class="nav spark-settings-stacked-tabs">
                 <!-- Subscription -->
-                <li role="presentation">
-                    <a href="#subscription">
+                <li role="presentation" class="{{ activeSetting == 'subscription' ? 'active' }}">
+                    <a href="{{ 'settings/subscription'|page }}">
                         <i class="fa fa-fw fa-btn fa-shopping-bag"></i> Subscription
                     </a>
                 </li>
