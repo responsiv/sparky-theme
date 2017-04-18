@@ -1,0 +1,37 @@
+description = "User settings pages"
+
+[session]
+security = "user"
+redirect = "account/signin"
+==
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% partial 'site/meta' %}
+    </head>
+    <body class="with-navbar">
+
+        <!-- Flash messages -->
+        {% partial 'site/flash-messages' %}
+
+        <div id="spark-app">
+            {% partial 'nav/user' %}
+
+            <div class="spark-screen container">
+                <div class="row">
+                    <!-- Tabs -->
+                    <div class="col-md-4">
+                        {% partial 'nav/settings' %}
+                    </div>
+
+                    <!-- Tab Panels -->
+                    <div class="col-md-8">
+                        {% page %}
+                    </div>
+                </div>
+            </div>
+
+            {% partial 'site/scripts' %}
+        </div>
+    </body>
+</html>

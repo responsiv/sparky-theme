@@ -8,6 +8,10 @@ description = "Default layout"
         {% partial 'site/meta' %}
     </head>
     <body class="with-navbar">
+
+        <!-- Flash messages -->
+        {% partial 'site/flash-messages' %}
+
         <div id="spark-app">
             {% if user %}
                 {% partial 'nav/user' %}
@@ -19,5 +23,6 @@ description = "Default layout"
 
             {% partial 'site/scripts' %}
         </div>
+
     </body>
 </html>

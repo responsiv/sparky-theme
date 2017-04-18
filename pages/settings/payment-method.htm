@@ -1,0 +1,18 @@
+title = "Invoices"
+url = "/settings/payment-method/:id"
+layout = "settings"
+
+[payProfile]
+profilePage = "settings/payment-method"
+isPrimary = 1
+
+[resources]
+vars[activeSetting] = "payment-methods"
+==
+<div class="panel panel-default">
+    <div class="panel-heading">Payment Method</div>
+
+    <div class="panel-body">
+        {% component 'payProfile' %}
+    </div>
+</div>

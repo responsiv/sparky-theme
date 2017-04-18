@@ -1,0 +1,12 @@
+title = "Payment Methods"
+url = "/settings/payment-method/:id"
+layout = "settings"
+
+[payProfile]
+isPrimary = "1"
+
+[resources]
+vars[activeSetting] = "payment-methods"
+==
+
+{% component 'payProfile' %}

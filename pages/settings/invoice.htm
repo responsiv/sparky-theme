@@ -1,0 +1,17 @@
+title = "View Invoices"
+meta_title = "Invoice %s"
+url = "/settings/invoice/:id"
+layout = "settings"
+
+[invoice]
+isPrimary = "1"
+
+[resources]
+vars[activeSetting] = "invoices"
+==
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        {% component 'invoice' %}
+    </div>
+</div>

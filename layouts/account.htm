@@ -10,6 +10,10 @@ redirect = "account/signin"
         {% partial 'site/meta' %}
     </head>
     <body class="with-navbar">
+
+        <!-- Flash messages -->
+        {% partial 'site/flash-messages' %}
+
         <div id="spark-app">
             {% partial 'nav/user' %}
 
@@ -17,5 +21,6 @@ redirect = "account/signin"
 
             {% partial 'site/scripts' %}
         </div>
+
     </body>
 </html>

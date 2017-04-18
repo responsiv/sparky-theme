@@ -1,0 +1,18 @@
+title = "Payment Methods"
+url = "/settings/payment-methods"
+layout = "settings"
+
+[payProfiles]
+profilePage = "settings/payment-method"
+autoRedirect = 0
+
+[resources]
+vars[activeSetting] = "payment-methods"
+==
+<div class="panel panel-default">
+    <div class="panel-heading">Payment Methods</div>
+
+    <div class="panel-body">
+        {% component 'payProfiles' %}
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="panel panel-default panel-flush">
+    <div class="panel-heading">
+        Settings
+    </div>
+
+    <div class="panel-body">
+        <div class="spark-settings-tabs">
+            <ul class="nav spark-settings-stacked-tabs" role="tablist">
+                <!-- Profile -->
+                <li role="presentation">
+                    <a href="#profile">
+                        <i class="fa fa-fw fa-btn fa-edit"></i> Profile
+                    </a>
+                </li>
+
+                <!-- Security -->
+                <li role="presentation">
+                    <a href="#security">
+                        <i class="fa fa-fw fa-btn fa-lock"></i> Security
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Billing tabs -->
+<div class="panel panel-default panel-flush">
+    <div class="panel-heading">
+        Billing
+    </div>
+
+    <div class="panel-body">
+        <div class="spark-settings-tabs">
+            <ul class="nav spark-settings-stacked-tabs">
+                <!-- Subscription -->
+                <li role="presentation">
+                    <a href="#subscription">
+                        <i class="fa fa-fw fa-btn fa-shopping-bag"></i> Subscription
+                    </a>
+                </li>
+
+                <!-- Payment method -->
+                <li role="presentation" class="{{ activeSetting == 'payment-methods' ? 'active' }}">
+                    <a href="{{ 'settings/payment-methods'|page }}">
+                        <i class="fa fa-fw fa-btn fa-credit-card"></i> Payment Method
+                    </a>
+                </li>
+
+                <!-- Invoices -->
+                <li role="presentation" class="{{ activeSetting == 'invoices' ? 'active' }}">
+                    <a href="{{ 'settings/invoices'|page }}">
+                        <i class="fa fa-fw fa-btn fa-history"></i> Invoices
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
