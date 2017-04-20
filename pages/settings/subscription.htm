@@ -2,12 +2,14 @@ title = "Subscription"
 url = "/settings/subscription"
 layout = "settings"
 
-[subscribePlanList]
+[subscribe]
+paymentPage = "account/register-pay"
 
-[subscribeMembership]
+[subscribePlanList]
 
 [resources]
 vars[activeSetting] = "subscription"
+js[] = "controls/subscribe.js"
 js[] = "pages/settings-subscription.js"
 ==
 

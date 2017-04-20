@@ -8,7 +8,7 @@
         <!-- Plan name -->
         <td>
             <div class="btn-table-align">
-                <a href="javascript:;" onclick="$.page.showPlanDetails(this)">
+                <a href="javascript:;" onclick="showPlanDetails(this)">
                     <strong>{{ plan.name }}</strong>
                 </a>
             </div>
@@ -18,7 +18,7 @@
         <td>
             <button
                 class="btn btn-default m-l-sm"
-                onclick="$.page.showPlanDetails(this)"
+                onclick="showPlanDetails(this)"
                 type="button">
                 <i class="fa fa-btn fa-star-o"></i> Plan features
             </button>
@@ -53,7 +53,7 @@
             <button
                 type="button"
                 class="btn btn-primary-outline btn-plan"
-                onclick="$.page.selectPlan(this)">
+                onclick="selectPlan(this)">
                 Select
             </button>
         </td>
