@@ -1,0 +1,25 @@
+{% set monthlyPlans = subscribePlanList.monthlyPlans %}
+{% set yearlyPlans = subscribePlanList.yearlyPlans %}
+{% set hasMonthlyAndYearlyPlans = monthlyPlans and yearlyPlans %}
+
+{% if hasMonthlyAndYearlyPlans %}
+    <div class="pull-right">
+        <div class="btn-group" data-toggle="buttons" style="padding-top: 2px;">
+            <button
+                type="button" class="btn btn-default active"
+                data-toggle="tab"
+                data-target="#monthlyPlansContent">
+                <input type="radio" autocomplete="off" checked>
+                Monthly
+            </button>
+            <button
+                type="button"
+                class="btn btn-default"
+                data-toggle="tab"
+                data-target="#yearlyPlansContent">
+                <input type="radio" autocomplete="off" checked>
+                Yearly
+            </button>
+        </div>
+    </div>
+{% endif %}

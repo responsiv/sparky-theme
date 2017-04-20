@@ -1,0 +1,22 @@
+{% set monthlyPlans = subscribePlanList.monthlyPlans %}
+{% set yearlyPlans = subscribePlanList.yearlyPlans %}
+{% set hasMonthlyAndYearlyPlans = monthlyPlans and yearlyPlans %}
+
+<div class="tab-content">
+    <div id="monthlyPlansContent" class="tab-pane active">
+        <table class="table table-borderless m-b-none">
+            <thead></thead>
+            <tbody>
+                {% partial 'plans/table-items' plans=monthlyPlans %}
+            </tbody>
+        </table>
+    </div>
+    <div id="yearlyPlansContent" class="tab-pane">
+        <table class="table table-borderless m-b-none">
+            <thead></thead>
+            <tbody>
+                {% partial 'plans/table-items' plans=yearlyPlans %}
+            </tbody>
+        </table>
+    </div>
+</div>

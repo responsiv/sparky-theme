@@ -7,8 +7,8 @@
         <div class="spark-settings-tabs">
             <ul class="nav spark-settings-stacked-tabs" role="tablist">
                 <!-- Profile -->
-                <li role="presentation">
-                    <a href="#profile">
+                <li role="presentation" class="{{ activeSetting == 'profile' ? 'active' }}">
+                    <a href="{{ 'settings'|page }}">
                         <i class="fa fa-fw fa-btn fa-edit"></i> Profile
                     </a>
                 </li>

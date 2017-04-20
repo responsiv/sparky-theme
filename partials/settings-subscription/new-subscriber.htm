@@ -1,0 +1,40 @@
+{% set monthlyPlans = subscribePlanList.monthlyPlans %}
+{% set yearlyPlans = subscribePlanList.yearlyPlans %}
+{% set hasMonthlyAndYearlyPlans = monthlyPlans and yearlyPlans %}
+
+{{ form_ajax('onSubscribe', { id: 'accountRegisterForm', class: 'form-horizontal' }) }}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="pull-left {{ hasMonthlyAndYearlyPlans ? 'btn-table-align' }}">
+                Subscribe
+            </div>
+
+            <!-- Plan tabs -->
+            {% partial 'plans/tabs-heading' %}
+
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="panel-body spark-row-list">
+            <!-- Subscription Notice -->
+            <div class="p-b">
+                You are not subscribed to a plan. Choose from the plans below to get started.
+            </div>
+
+            <!-- Available plans -->
+            {% partial 'plans/tabs-content' %}
+
+        </div>
+    </div>
+
+    <div style="display:none" data-billing-form>
+        <div class="panel panel-default">
+            <div class="panel-heading">Billing Information</div>
+
+            <div class="panel-body">
+                <!-- Billing form -->
+                {% partial 'account/fields-billing' %}
+            </div>
+        </div>
+    </div>
+{{ form_close() }}

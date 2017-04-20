@@ -8,16 +8,13 @@ layout = "settings"
 
 [resources]
 vars[activeSetting] = "subscription"
+js[] = "pages/settings-subscription.js"
 ==
-<div class="panel panel-default">
-    <div class="panel-heading">Update Subscription</div>
 
-    <div class="panel-body">
+{% if hasMembership %}
 
-        <!-- Plan selection -->
-        {% if hasPlans %}
-            {% partial 'account/register-plans' %}
-        {% endif %}
+{% else %}
 
-    </div>
-</div>
+    {% partial 'settings-subscription/new-subscriber' %}
+
+{% endif %}

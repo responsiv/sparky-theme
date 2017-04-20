@@ -90,6 +90,7 @@
                 error: function(jqXHR, textStatus, errorThrown) {
                     // alert(jqXHR.responseText.length ? jqXHR.responseText : jqXHR.statusText)
                     self.$loader.remove()
+                    self.$modal.modal('hide')
                     self.destroy()
                     this.error(jqXHR, textStatus, errorThrown)
                 }

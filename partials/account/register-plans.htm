@@ -11,27 +11,8 @@
                     Subscription
                 </div>
 
-                {% if hasMonthlyAndYearlyPlans %}
-                    <div class="pull-right">
-                        <div class="btn-group" data-toggle="buttons" style="padding-top: 2px;">
-                            <button
-                                type="button" class="btn btn-default active"
-                                data-toggle="tab"
-                                data-target="#monthlyPlansContent">
-                                <input type="radio" autocomplete="off" checked>
-                                Monthly
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-default"
-                                data-toggle="tab"
-                                data-target="#yearlyPlansContent">
-                                <input type="radio" autocomplete="off" checked>
-                                Yearly
-                            </button>
-                        </div>
-                    </div>
-                {% endif %}
+                <!-- Plan tabs -->
+                {% partial 'plans/tabs-heading' %}
 
                 <div class="clearfix"></div>
             </div>
@@ -46,24 +27,8 @@
                 </div>
 
                 <!-- Available plans -->
-                <div class="tab-content">
-                    <div id="monthlyPlansContent" class="tab-pane active">
-                        <table class="table table-borderless m-b-none">
-                            <thead></thead>
-                            <tbody>
-                                {% partial 'plans/table-items' plans=monthlyPlans %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="yearlyPlansContent" class="tab-pane">
-                        <table class="table table-borderless m-b-none">
-                            <thead></thead>
-                            <tbody>
-                                {% partial 'plans/table-items' plans=yearlyPlans %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                {% partial 'plans/tabs-content' %}
+
             </div>
 
         </div>
