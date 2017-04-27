@@ -2,7 +2,7 @@ title = "Register Payment"
 url = "/register/pay/:hash"
 layout = "default"
 
-[payment]
+[subscribePayment]
 ==
 
 <div class="spark-screen container">
@@ -19,14 +19,6 @@ layout = "default"
                         </div>
                     </div>
                 {% else %}
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Billing details
-                        </div>
-                        <div class="panel-body">
-                            {% partial 'account/register-pay-invoice' %}
-                        </div>
-                    </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Payment method

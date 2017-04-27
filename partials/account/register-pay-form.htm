@@ -1,0 +1,5 @@
+{% if paymentMethod %}
+    <div class="payment_form">
+        {{ paymentMethod.renderPaymentProfileForm(this.controller)|raw }}
+    </div>
+{% endif %}
