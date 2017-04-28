@@ -1,0 +1,69 @@
+title = "View Invoices"
+meta_title = "Invoice %s"
+url = "/settings/invoice/payment/:hash"
+layout = "settings"
+
+[payment]
+invoicePage = "settings/invoice"
+
+[resources]
+vars[activeSetting] = "invoices"
+==
+
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        {% if invoice.isPaid %}
+
+            <div class="payment-invoice-success">
+                <h4 class="text-success">
+                    This invoice has been paid. Thank-you!
+                </h4>
+                <p>
+                    View <a href="{{ invoice.url }}">invoice {{ invoice.getUniqueId }}</a>
+                </p>
+            </div>
+
+        {% else %}
+
+            {% partial 'settings/invoice-table' %}
+
+            <div class="payment-methods">
+                {% if paymentMethods|length %}
+
+                    <!-- Payment method -->
+                    {% if paymentMethods|length > 1 %}
+                        <h5>Please choose a payment method</h5>
+
+                        {{ form_open() }}
+                            {% for type in paymentMethods %}
+                                <div class="radio">
+                                    <label for="type{{ type.id }}">
+                                        <input
+                                            id="type{{ type.id }}"
+                                            name="payment_method"
+                                            value="{{ type.id }}"
+                                            type="radio"
+                                            {{ type.id == invoice.payment_method_id ? 'checked' }}
+                                            data-request="onUpdatePaymentType"
+                                            data-request-update="'@payment_form': '#partialPaymentForm'"
+                                            />
+                                        {{ type.name }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        {{ form_close() }}
+
+                    {% endif %}
+
+                    <!-- Payment form -->
+                    <div id="partialPaymentForm">{% partial '@payment_form' %}</div>
+                {% else %}
+                    <p>Whoops! There are not payment methods set up, please contact site support.</p>
+                {% endif %}
+            </div>
+
+        {% endif %}
+
+    </div>
+</div>

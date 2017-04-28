@@ -5,6 +5,7 @@ layout = "settings"
 
 [invoice]
 isPrimary = "1"
+payPage = "settings/invoice-payment"
 
 [resources]
 vars[activeSetting] = "invoices"
@@ -13,5 +14,22 @@ vars[activeSetting] = "invoices"
 <div class="panel panel-default">
     <div class="panel-body">
         {% partial 'settings/invoice-table' %}
+
+        <!-- Status -->
+        <div class="text-right">
+            {% if invoice.payment_method %}
+                {% if invoice.isPaid %}
+                    <h4>This invoice has been paid!</h4>
+                    <p>Thank you for your business.</p>
+                {% else %}
+                    <h4>This invoice has not been paid</h4>
+                    <a class="btn btn-success btn-lg" href="{{ invoice.url }}">
+                        Pay this Invoice
+                    </a>
+                {% endif %}
+            {% else %}
+                <p>Sorry there are no payment gateways available to use!</p>
+            {% endif %}
+        </div>
     </div>
 </div>
