@@ -1,45 +1,41 @@
 title = "Subscription Payment"
-url = "/settings/subscribe/:hash"
+url = "/settings/subscribe/pay/:hash"
 layout = "settings"
 
 [subscribePayment]
-==
 
-<div class="spark-screen container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            {% if invoice %}
-                {% if invoice.isPaymentProcessed %}
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Payment complete
-                        </div>
-                        <div class="panel-body">
-                            {% partial 'account/register-pay-success' %}
-                        </div>
-                    </div>
-                {% else %}
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Payment method
-                        </div>
-                        <div class="panel-body">
-                            {% partial 'account/register-pay-method' %}
-                        </div>
-                    </div>
-                {% endif %}
-            {% else %}
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Error
-                    </div>
-                    <div class="panel-body">
-                        <div class="payment-not-found">
-                            <p>Sorry, that payment could not be found</p>
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
+[resources]
+vars[activeSetting] = "subscribe"
+==
+{% if invoice %}
+    {% if invoice.isPaymentProcessed %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Payment complete
+            </div>
+            <div class="panel-body">
+                {% partial 'account/register-pay-success' %}
+            </div>
+        </div>
+    {% else %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Payment method
+            </div>
+            <div class="panel-body">
+                {% partial 'account/register-pay-method' %}
+            </div>
+        </div>
+    {% endif %}
+{% else %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Error
+        </div>
+        <div class="panel-body">
+            <div class="payment-not-found">
+                <p>Sorry, that payment could not be found</p>
+            </div>
         </div>
     </div>
-</div>
+{% endif %}

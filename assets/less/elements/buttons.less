@@ -98,3 +98,23 @@
 .fa-btn {
     margin-right: 5px;
 }
+
+// Submit / busy buttons
+
+.form-submit-btn > span {
+    &:first-child {
+        display: none;
+    }
+    &:last-child {
+        display: block;
+    }
+}
+
+.form-submit-btn.btn-busy > span {
+    &:first-child {
+        display: block;
+    }
+    &:last-child {
+        display: none;
+    }
+}

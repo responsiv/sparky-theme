@@ -3,7 +3,7 @@
     <label class="col-md-4 control-label">Address</label>
 
     <div class="col-sm-6">
-        <input type="text" name="street_addr" class="form-control">
+        <input type="text" name="street_addr" class="form-control" value="{{ user.street_addr }}" />
     </div>
 </div>
 
@@ -12,7 +12,7 @@
     <label class="col-md-4 control-label">City</label>
 
     <div class="col-sm-6">
-        <input type="text" name="city" class="form-control">
+        <input type="text" name="city" class="form-control" value="{{ user.city }}" />
     </div>
 </div>
 
@@ -22,12 +22,12 @@
 
     <!-- State -->
     <div class="col-sm-3">
-        <input type="text" name="state_name" class="form-control" placeholder="State">
+        <input type="text" name="state_name" class="form-control" value="{{ user.state_name }}" placeholder="State" />
     </div>
 
     <!-- Postal code -->
     <div class="col-sm-3">
-        <input type="text" name="zip" class="form-control" placeholder="Postal code">
+        <input type="text" name="zip" class="form-control" value="{{ user.zip }}" placeholder="Postal code" />
     </div>
 </div>
 
@@ -36,21 +36,10 @@
     <label class="col-md-4 control-label">Country</label>
 
     <div class="col-sm-6">
-        {{ form_select_country('country', null, {
+        {{ form_select_country('country', user.country_id, {
             emptyOption: '',
             class: 'form-control',
             onChange: 'updatePlanPricing()'
         }) }}
-    </div>
-</div>
-
-<!-- Tax / Price info -->
-<div class="form-group">
-    <label class="col-md-4 control-label">&nbsp;</label>
-
-    <div class="col-md-6">
-        <div id="partialPlansPriceDetails" class="alert alert-info plan-price-details">
-            {% partial 'plans/price-details' plan=null %}
-        </div>
     </div>
 </div>

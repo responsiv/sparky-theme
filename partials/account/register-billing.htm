@@ -7,6 +7,17 @@
                 <!-- Billing form -->
                 {% partial 'account/fields-billing' %}
 
+                <!-- Tax / Price info -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+
+                    <div class="col-md-6">
+                        <div id="partialPlansPriceDetails" class="alert alert-info plan-price-details">
+                            {% partial 'plans/price-details' plan=null %}
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Terms and conditions -->
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
