@@ -9,10 +9,41 @@ isPrimary = 1
 [resources]
 vars[activeSetting] = "payment-methods"
 ==
-<div class="panel panel-default">
-    <div class="panel-heading">Payment Method</div>
+{% if paymentMethod %}
 
-    <div class="panel-body">
-        {% component 'payProfile' %}
+
+    {% if profile %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ form_ajax('onDeletePaymentProfile') }}
+                    <input type="hidden" name="redirect" value="{{ returnPage|page }}" />
+
+                    <i class="icon icon-credit-card m-r-sm"></i>
+                    Stored credit card &mdash; {{ '************' ~ profile.card_last_four }}
+
+                    <button type="submit" class="btn btn-link">
+                        Delete card
+                    </button>
+
+                 {{ form_close() }}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Update Payment Method</div>
+
+        <div class="panel-body">
+            {{ paymentMethod.renderPaymentProfileForm(this.controller)|raw }}
+        </div>
     </div>
-</div>
+
+{% else %}
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p>Payment method not found.</p>
+        </div>
+    </div>
+
+{% endif %}

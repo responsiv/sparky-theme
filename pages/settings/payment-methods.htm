@@ -12,7 +12,29 @@ vars[activeSetting] = "payment-methods"
 <div class="panel panel-default">
     <div class="panel-heading">Payment Methods</div>
 
-    <div class="panel-body">
-        {% component 'payProfiles' %}
-    </div>
+    {% if paymentMethods|length %}
+        <ul class="list-group">
+            {% for method in paymentMethods %}
+                <li class="list-group-item">
+                     <h4><i class="icon icon-credit-card m-r-sm"></i> {{ method.name }}</h4>
+                     {% set profile = method.findUserProfile(user) %}
+
+                     {% if profile %}
+                        <p>
+                            Stored credit card: {{ '************' ~ profile.card_last_four }}
+                            &mdash; <a href="{{ profilePage|page({ id: method.id }) }}">Update or delete</a>
+                        </p>
+                     {% else %}
+                        <p>
+                            <a href="{{ profilePage|page({ id: method.id }) }}">Enter credit card details</a>
+                        </p>
+                     {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="panel-body">
+            <p>Payment profiles not found</p>
+        </div>
+    {% endif %}
 </div>

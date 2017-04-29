@@ -12,35 +12,39 @@ vars[activeSetting] = "invoices"
     <div class="panel-heading">Invoices</div>
 
     <div class="panel-body">
-        <table class="table table-borderless m-b-none">
-            <thead>
-            </thead>
-            <tbody>
-                {% for invoice in invoices %}
-                    <tr>
-                        <!-- Invoice Date -->
-                        <td>
-                            <div class="btn-table-align">
-                                <strong>{{ invoice.sent_at }}</strong>
-                            </div>
-                        </td>
+        {% if invoices|length %}
+            <table class="table table-borderless m-b-none">
+                <thead>
+                </thead>
+                <tbody>
+                    {% for invoice in invoices %}
+                        <tr>
+                            <!-- Invoice Date -->
+                            <td>
+                                <div class="btn-table-align">
+                                    <strong>{{ invoice.sent_at }}</strong>
+                                </div>
+                            </td>
 
-                        <!-- Invoice Total -->
-                        <td>
-                            <div class="btn-table-align">{{ invoice.total|currency }}</div>
-                        </td>
+                            <!-- Invoice Total -->
+                            <td>
+                                <div class="btn-table-align">{{ invoice.total|currency }}</div>
+                            </td>
 
-                        <!-- Invoice Download Button -->
-                        <td class="text-right">
-                            <a href="{{ invoice.url }}">
-                                <button class="btn btn-default">
-                                    <i class="fa fa-btn fa-file-o"></i> View Invoice
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                            <!-- Invoice Download Button -->
+                            <td class="text-right">
+                                <a href="{{ invoice.url }}">
+                                    <button class="btn btn-default">
+                                        <i class="fa fa-btn fa-file-o"></i> View Invoice
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            There are no invoices to display.
+        {% endif %}
     </div>
 </div>

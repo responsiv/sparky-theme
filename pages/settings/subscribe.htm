@@ -1,0 +1,22 @@
+title = "Subscription"
+url = "/settings/subscribe"
+layout = "settings"
+
+[subscribe]
+paymentPage = "settings/subscribe-pay"
+
+[subscribePlanList]
+
+[resources]
+vars[activeSetting] = "subscribe"
+js[] = "controls/subscribe.js"
+js[] = "pages/settings-subscribe.js"
+==
+
+{% if hasMembership %}
+
+{% else %}
+
+    {% partial 'settings-subscribe/new-subscriber' %}
+
+{% endif %}
