@@ -11,7 +11,6 @@ vars[activeSetting] = "payment-methods"
 ==
 {% if paymentMethod %}
 
-
     {% if profile %}
         <div class="panel panel-default">
             <div class="panel-body">
@@ -19,10 +18,10 @@ vars[activeSetting] = "payment-methods"
                     <input type="hidden" name="redirect" value="{{ returnPage|page }}" />
 
                     <i class="icon icon-credit-card m-r-sm"></i>
-                    Stored credit card &mdash; {{ '************' ~ profile.card_last_four }}
+                    Stored payment profile &mdash; {{ '************' ~ profile.card_last_four }}
 
                     <button type="submit" class="btn btn-link">
-                        Delete card
+                        Delete
                     </button>
 
                  {{ form_close() }}
