@@ -1,6 +1,6 @@
 {% for plan in plans %}
     <tr
-        class="plan-select-button"
+        class="plan-select-button {{ activePlan.id == plan.id ? 'plan-selected' }}"
         data-plan-object
         data-id="{{ plan.id }}"
         data-name="{{ plan.name }}"

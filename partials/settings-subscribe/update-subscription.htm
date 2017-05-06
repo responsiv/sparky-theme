@@ -1,0 +1,30 @@
+{% set monthlyPlans = subscribePlanList.monthlyPlans %}
+{% set yearlyPlans = subscribePlanList.yearlyPlans %}
+{% set hasMonthlyAndYearlyPlans = monthlyPlans and yearlyPlans %}
+{% set activePlan = user.membership.activePlan %}
+
+{{ form_ajax('onSubscribe', { id: 'subscribeForm', class: 'form-horizontal is-subscribed' }) }}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="pull-left {{ hasMonthlyAndYearlyPlans ? 'btn-table-align' }}">
+                Subscribe
+            </div>
+
+            <!-- Plan tabs -->
+            {% partial 'plans/tabs-heading' %}
+
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="panel-body spark-row-list">
+            <!-- Current Subscription (Active) -->
+            <div class="p-b">
+                You are currently subscribed to the
+                <strong>{{ activePlan.name }}</strong> plan.
+            </div>
+
+            <!-- Available plans -->
+            {% partial 'plans/tabs-content' activePlan=activePlan %}
+        </div>
+    </div>
+{{ form_close() }}

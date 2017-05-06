@@ -12,8 +12,9 @@ vars[activeSetting] = "subscribe"
 js[] = "controls/subscribe.js"
 js[] = "pages/settings-subscribe.js"
 ==
+{% if user.hasMembership %}
 
-{% if hasMembership %}
+    {% partial 'settings-subscribe/update-subscription' %}
 
 {% else %}
 

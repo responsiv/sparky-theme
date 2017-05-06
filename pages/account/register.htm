@@ -14,7 +14,7 @@ js[] = "pages/account-register.js"
 {% set hasPlans = subscribePlanList.monthlyPlans or subscribePlanList.yearlyPlans %}
 
 <div class="spark-screen container">
-    {{ form_ajax('onRegister', { id: 'accountRegisterForm', class: 'form-horizontal' }) }}
+    {{ form_ajax('onRegister', { id: 'subscribeForm', class: 'form-horizontal' }) }}
 
         <!-- Plan selection -->
         {% if hasPlans %}

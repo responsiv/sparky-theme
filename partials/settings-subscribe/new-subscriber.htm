@@ -2,7 +2,7 @@
 {% set yearlyPlans = subscribePlanList.yearlyPlans %}
 {% set hasMonthlyAndYearlyPlans = monthlyPlans and yearlyPlans %}
 
-{{ form_ajax('onSubscribe', { id: 'accountRegisterForm', class: 'form-horizontal' }) }}
+{{ form_ajax('onSubscribe', { id: 'subscribeForm', class: 'form-horizontal' }) }}
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="pull-left {{ hasMonthlyAndYearlyPlans ? 'btn-table-align' }}">

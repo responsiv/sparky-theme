@@ -8,22 +8,59 @@ layout = "settings"
 vars[activeSetting] = "subscribe"
 ==
 {% if invoice %}
-    {% if invoice.isPaymentProcessed %}
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Payment complete
+    {% if hasProfile %}
+        {% if not invoice.isPastDueDate %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Trial started
+                </div>
+                <div class="panel-body">
+                    <h4 class="text-success">
+                        We will deduct the payment {{ invoice.due_at.toFormattedDateString|default('soon') }}
+                    </h4>
+                </div>
             </div>
-            <div class="panel-body">
-                {% partial 'account/register-pay-success' %}
+        {% elseif invoice.isPaymentProcessed %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Payment complete
+                </div>
+                <div class="panel-body">
+                    {% partial 'payment/pay-success' %}
+                </div>
             </div>
-        </div>
+        {% else %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Payment error
+                </div>
+                <div class="panel-body">
+                    <div class="payment-invoice-error">
+                        <h4 class="text-danger">
+                            We were unable to automatically pay for this subscription.
+                        </h4>
+                        <p>
+                            The payment profile for your account returned an error. Here are your options:
+                        </p>
+                        <ul>
+                            <li>
+                                <a href="{{ 'settings/invoice-payment'|page }}">Make the payment manually</a>
+                            </li>
+                            <li>
+                                <a href="{{ 'settings/payment-methods'|page }}">Manage payment methods</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     {% else %}
         <div class="panel panel-default">
             <div class="panel-heading">
                 Payment method
             </div>
             <div class="panel-body">
-                {% partial 'account/register-pay-method' %}
+                {% partial 'payment/pay-method' %}
             </div>
         </div>
     {% endif %}

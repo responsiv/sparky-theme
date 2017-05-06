@@ -15,7 +15,7 @@ layout = "default"
                             Payment complete
                         </div>
                         <div class="panel-body">
-                            {% partial 'account/register-pay-success' %}
+                            {% partial 'payment/pay-success' %}
                         </div>
                     </div>
                 {% else %}
@@ -24,7 +24,7 @@ layout = "default"
                             Payment method
                         </div>
                         <div class="panel-body">
-                            {% partial 'account/register-pay-method' %}
+                            {% partial 'payment/pay-method' %}
                         </div>
                     </div>
                 {% endif %}

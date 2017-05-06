@@ -3,7 +3,7 @@
 {% set hasMonthlyAndYearlyPlans = monthlyPlans and yearlyPlans %}
 
 <!-- Selected plan value -->
-<input type="hidden" name="selected_plan" value="" data-error-alert="#planEmptyError" />
+<input type="hidden" name="selected_plan" value="{{ activePlan.id }}" data-error-alert="#planEmptyError" />
 
 <div id="planEmptyError" class="alert alert-danger" style="display: none">
     Please select a plan from the list below to continue.

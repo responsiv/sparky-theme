@@ -8,10 +8,14 @@
     // Properties
     //
 
-    var $form
+    var $form,
+        hasSubscription = false
 
     function init() {
-        $form = $('#accountRegisterForm')
+        $form = $('#subscribeForm')
+
+        hasSubscription = $form.hasClass('is-subscribed')
+
         setActivePlanFromPage()
     }
 
@@ -25,14 +29,14 @@
 
         $el.ajaxModal({
             handler: 'onGetPlanDetails',
-            updatePartial: 'plans/feature-list',
+            updatePartial: 'plans/feature-list-form',
             extraData: {
                 selected_plan: plan.id
             }
         })
     }
 
-    window.selectPlan = function(el) {
+    window.selectPlan = function(el, internal) {
         var $el = $(el),
             plan = getPlanFromElement($el),
             $container = $el.closest('.plan-select-button')
@@ -43,7 +47,16 @@
             .not($container)
             .removeClass('plan-selected')
 
-        makePlanActive(plan)
+        if (internal) {
+            return
+        }
+
+        if (hasSubscription) {
+            updateSubscription($el, plan)
+        }
+        else {
+            makePlanActive(plan)
+        }
     }
 
     window.updatePlanPricing = function() {
@@ -59,13 +72,23 @@
             $el = $('[data-plan-object][data-id='+(id ? id : 0)+']:first')
 
         if ($el.length) {
-            selectPlan($el)
+            selectPlan($el, true)
         }
     }
 
     //
     // Protected
     //
+
+    function updateSubscription($el, plan) {
+        $el.ajaxModal({
+            handler: 'onLoadUpdateConfirmForm',
+            updatePartial: 'settings-subscribe/update-confirm-form',
+            extraData: {
+                selected_plan: plan.id
+            }
+        })
+    }
 
     function makePlanActive(plan) {
         $('input[name=selected_plan]').val(plan.id).trigger('change')

@@ -1,0 +1,27 @@
+{{ form_ajax('onUpdateConfirm') }}
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Update Subscription</h4>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" name="selected_plan" value="{{ newPlan.id }}" />
+
+        <p>
+            Are you sure you want to switch to the
+            <strong>{{ newPlan.name }}</strong>
+            plan?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button
+            class="btn btn-default"
+            data-dismiss="modal">
+            Close
+        </button>
+        <button
+            class="btn btn-primary"
+            type="submit">
+            Yes, I'm sure!
+        </button>
+    </div>
+{{ form_close() }}
