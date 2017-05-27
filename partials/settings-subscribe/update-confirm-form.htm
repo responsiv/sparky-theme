@@ -6,11 +6,17 @@
     <div class="modal-body">
         <input type="hidden" name="selected_plan" value="{{ newPlan.id }}" />
 
-        <p>
-            Are you sure you want to switch to the
-            <strong>{{ newPlan.name }}</strong>
-            plan?
-        </p>
+        {% if samePlan %}
+            <p>
+                You are currently subscribed to <strong>{{ newPlan.name }}</strong>!
+            </p>
+        {% else %}
+            <p>
+                Are you sure you want to switch to the
+                <strong>{{ newPlan.name }}</strong>
+                plan?
+            </p>
+        {% endif %}
     </div>
     <div class="modal-footer">
         <button
@@ -18,10 +24,12 @@
             data-dismiss="modal">
             Close
         </button>
-        <button
-            class="btn btn-primary"
-            type="submit">
-            Yes, I'm sure!
-        </button>
+        {% if not samePlan %}
+            <button
+                class="btn btn-primary"
+                type="submit">
+                Yes, I'm sure!
+            </button>
+        {% endif %}
     </div>
 {{ form_close() }}

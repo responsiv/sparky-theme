@@ -1,6 +1,6 @@
 # October Sparky
 
-![Screenshot](https://raw.githubusercontent.com/responsiv/spark-theme/master/assets/images/theme-preview.png)
+![Screenshot](https://raw.githubusercontent.com/responsiv/sparky-theme/master/assets/images/theme-preview.png)
 
 > **Note**: This project is a work in progress.
 

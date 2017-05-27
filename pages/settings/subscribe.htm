@@ -12,9 +12,24 @@ vars[activeSetting] = "subscribe"
 js[] = "controls/subscribe.js"
 js[] = "pages/settings-subscribe.js"
 ==
+
+{% partial 'settings-subscribe/trial-expire-notice' %}
+
 {% if user.hasMembership %}
 
     {% partial 'settings-subscribe/update-subscription' %}
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <button
+                data-control="ajax-modal"
+                data-handler="onLoadCancelConfirmForm"
+                data-update-partial="settings-subscribe/cancel-confirm-form"
+                class="btn btn-danger-outline">
+                Cancel Subscription
+            </button>
+        </div>
+    </div>
 
 {% else %}
 
