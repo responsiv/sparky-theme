@@ -41,11 +41,13 @@
             plan = getPlanFromElement($el),
             $container = $el.closest('.plan-select-button')
 
-        $container.addClass('plan-selected')
+        if (!hasSubscription) {
+            $container.addClass('plan-selected')
 
-        $('.plan-select-button')
-            .not($container)
-            .removeClass('plan-selected')
+            $('.plan-select-button')
+                .not($container)
+                .removeClass('plan-selected')
+        }
 
         if (internal) {
             return

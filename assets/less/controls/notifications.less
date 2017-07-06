@@ -1,125 +1,86 @@
-#modal-notifications {
-    .modal-header {
+.control-notifications {
+    position: relative;
+
+    .notifications-popover {
         background: #fff;
-        border-bottom: 0;
-        margin-bottom: 0;
-        height: 70px;
-        width: 100%;
-        position: fixed;
-        z-index: 100;
+        border: 1px solid #f0f0f0;
+        position: absolute;
+        width: 480px;
+        z-index: 2;
+        right: -10px;
+        top: 0;
+        display: none;
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    }
 
-        .btn-group {
-            padding-top: 4px;
-            width: 100%;
+    &.active .notifications-popover {
+        display: block;
+    }
+
+    .notifications-header {
+        border-bottom: 1px solid #f0f0f0;
+        padding: 15px;
+
+        h4 {
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+
+        .close, .mark-all-read {
+            float: right;
+            margin: 0 5px;
         }
     }
 
-    .modal-dialog {
-        height: 100vh;
-        min-height: 100vh;
-    }
-
-    .modal-content {
-        background: #f5f8fa;
-        border: none;
-        overflow-y: scroll;
-        height: 100vh;
-        min-height: 100vh;
-    }
-
-    .modal-body {
-        padding: 0;
-        height: 100vh;
-        min-height: 100vh;
-    }
-
-    .modal-footer {
-        background: #fff;
-        border-top: 1px dashed rgba(0,0,0,.1);
-        width: 350px;
-    }
-
-    .notification-container:first-child {
-      padding-top: 70px;
-    }
-
-    .notification-container:last-child {
-      padding-bottom: 65px + 23px;
-    }
-
-    .notification:not(:first-child) {
-        padding-top: 25px;
-    }
-
-    .notification:not(:last-child) {
-        margin-bottom: 23px;
-    }
-
-    .notification {
-        position: relative;
-        padding: 20px 15px 0px 15px;
-        border-top: 1px dashed rgba(0,0,0,.1);
-    }
-
-    figure { position: absolute; }
-
-    .notification-content {
-        padding-left: 70px;
-
-        .meta {
-            display: flex;
-            align-content: flex-end;
+    .notifications-content {
+        .notifications-loading {
+            padding: 20px;
+            font-size: 24px;
+            text-align: center;
         }
 
-        .title {
-            flex: 1;
-            font-weight: bold;
-            line-height: 1.2;
-            margin: 2px 0 10px;
+        .no-notifications {
+            text-align: center;
+            padding: 25px;
+            margin: 0;
         }
 
-        .date { color: #aaa; }
+        > ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            overflow: auto;
+            max-height: 400px;
+        }
 
-        .notification-body {
-            margin-bottom: 15px;
+        > ul > li {
+            position: relative;
+            padding: 10px 25px 10px 60px;
+            border-bottom: 1px solid #f9f9f9;
+
+            > i {
+                position: absolute;
+                left: 25px;
+                top: 12px;
+                font-size: 18px;
+                opacity: .5;
+            }
+
+            .parsed-body > *:last-child {
+                margin-bottom: 0;
+            }
+
+            .date {
+                white-space: nowrap;
+                opacity: .75;
+            }
         }
     }
 
-    .spark-profile-photo {
-        height: 52px;
-        width: 52px;
+    .notifications-footer {
+        border-top: 1px solid #f0f0f0;
+        padding: 15px;
+        text-align: center;
     }
-
-
-    .fa-stack {
-        color: @spark-border-color;
-        font-size: 26px;
-    }
-
-    h4 {
-        margin-bottom: 15px;
-        margin-top: 3px;
-    }
-}
-
-.modal.docked .modal-dialog {
-    position: fixed;
-    top: 0;
-    margin: 0;
-    height: 100vh;
-    width: 350px;
-}
-
-.modal.docked.docked-left .modal-dialog { left: 0; }
-.modal.docked.docked-right .modal-dialog { right: 0; }
-
-.modal.docked .modal-content {
-    border-radius: 0;
-    height: 100vh;
-}
-
-.modal.docked .modal-footer {
-    position: fixed;
-    bottom: 0;
-    right: 0;
 }

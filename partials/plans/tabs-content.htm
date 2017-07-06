@@ -15,7 +15,7 @@
         <table class="table table-borderless m-b-none">
             <thead></thead>
             <tbody>
-                {% partial 'plans/table-items' plans=monthlyPlans %}
+                {% partial 'plans/table-items' plans=monthlyPlans activePlan=activePlan %}
             </tbody>
         </table>
     </div>
@@ -23,7 +23,7 @@
         <table class="table table-borderless m-b-none">
             <thead></thead>
             <tbody>
-                {% partial 'plans/table-items' plans=yearlyPlans %}
+                {% partial 'plans/table-items' plans=yearlyPlans activePlan=activePlan %}
             </tbody>
         </table>
     </div>

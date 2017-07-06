@@ -23,12 +23,37 @@
 
                 <!-- Notifications -->
                 <li>
-                    <a class="has-activity-indicator">
+                    <a
+                        class="notifications-link {{ hasNotifications ? 'has-notifications' }}"
+                        onclick="toggleNotificationsPopover('.control-notifications')">
                         <div class="navbar-icon">
-                            {% if hasNotifications %}<i class="activity-indicator"></i>{% endif %}
+                            <i class="activity-indicator"></i>
                             <i class="icon fa fa-bell"></i>
                         </div>
                     </a>
+
+                    <form class="control-notifications">
+                        <div class="notifications-popover">
+                            <div class="notifications-header">
+                                <h4>Notifications</h4>
+                                <button
+                                    type="button"
+                                    class="close"
+                                    onclick="toggleNotificationsPopover(this)">×</button>
+
+                                <a href="javascript:;" onclick="markNotificationsAsRead(this)" class="mark-all-read">
+                                    Mark all as read
+                                </a>
+                            </div>
+
+                            <div class="notifications-content" id="notificationsContent">
+                                <div class="notifications-loading">
+                                    <span class="oc-loading"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
                 </li>
 
                 <li class="dropdown">

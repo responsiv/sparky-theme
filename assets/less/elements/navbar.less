@@ -8,11 +8,13 @@
     color: @navbar-inverse-link-color;
 }
 
+.navbar-nav > li > form > a,
 .navbar-nav > li > a {
     cursor: pointer;
     font-weight: 400;
 }
 
+.navbar-nav > li > form > a,
 .navbar-nav > li > a,
 .navbar-brand,
 .hamburger {
@@ -38,12 +40,17 @@
         right: -1px;
         transition: all .15s;
         transform: scale(.85);
+        display: none;
     }
 
     .icon { font-size: 21px; }
 }
 
-.has-activity-indicator:hover .activity-indicator {
+.notifications-link.has-notifications .activity-indicator {
+    display: inline-block;
+}
+
+.notifications-link:hover .activity-indicator {
     transform: scale(1.1);
 }
 
