@@ -1,16 +1,24 @@
 title = "Demonstration"
 url = "/"
 layout = "home"
+
+[session]
 ==
 <div class="full-height flex-column">
     <nav class="links">
-        <a href="{{ 'account/signin'|page }}">
-            Sign in
-        </a>
+        {% if user %}
+            <a href="{{ 'dashboard'|page }}">
+                Dashboard
+            </a>
+        {% else %}
+            <a href="{{ 'account/signin'|page }}">
+                Sign in
+            </a>
 
-        <a href="{{ 'account/register'|page }}">
-            Register
-        </a>
+            <a href="{{ 'account/register'|page }}">
+                Register
+            </a>
+        {% endif %}
     </nav>
 
     <div class="flex-fill flex-center">
