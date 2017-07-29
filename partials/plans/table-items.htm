@@ -17,7 +17,7 @@
         <!-- Plan features button -->
         <td>
             <button
-                class="btn btn-default m-l-sm"
+                class="btn btn-default"
                 onclick="showPlanDetails(this)"
                 type="button">
                 <i class="fa fa-btn fa-star-o"></i> Plan features
@@ -44,18 +44,30 @@
             {% endif %}
         </td>
 
-        <!-- Plan select button -->
-        <td>
-            <button type="button" class="btn btn-primary btn-plan" disabled>
-                <i class="fa fa-btn fa-check"></i> Selected
-            </button>
+        {% if resumeMode %}
+            <!-- Plan resume button -->
+            <td>
+                <button
+                    type="button"
+                    class="btn btn-warning-outline btn-plan"
+                    onclick="selectPlan(this)">
+                    Resume
+                </button>
+            </td>
+        {% else %}
+            <!-- Plan select button -->
+            <td>
+                <button type="button" class="btn btn-primary btn-plan" disabled>
+                    <i class="fa fa-btn fa-check"></i> Selected
+                </button>
 
-            <button
-                type="button"
-                class="btn btn-primary-outline btn-plan"
-                onclick="selectPlan(this)">
-                Select
-            </button>
-        </td>
+                <button
+                    type="button"
+                    class="btn btn-primary-outline btn-plan"
+                    onclick="selectPlan(this)">
+                    Select
+                </button>
+            </td>
+        {% endif %}
     </tr>
 {% endfor %}

@@ -1,0 +1,37 @@
+{% set monthlyPlans = subscribePlanList.monthlyPlans %}
+{% set yearlyPlans = subscribePlanList.yearlyPlans %}
+{% set hasMonthlyAndYearlyPlans = monthlyPlans and yearlyPlans %}
+{% set activeSubscription = user.activeSubscription %}
+{% set activePlan = activeSubscription.plan %}
+
+{{ form_ajax('onSubscribe', { id: 'subscribeForm', class: 'form-horizontal is-cancelled' }) }}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="pull-left {{ hasMonthlyAndYearlyPlans ? 'btn-table-align' }}">
+                Resume Subscription
+            </div>
+
+            <!-- Plan tabs -->
+            {% partial 'plans/tabs-heading' %}
+
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="panel-body spark-row-list">
+            <div class="p-b">
+                Your subscription to the <strong>{{ activePlan.name }}</strong> plan has been cancelled.
+            </div>
+
+            {% if activeSubscription.isDelayCancelled %}
+                <div class="p-b-lg">
+                    The benefits of your subscription will continue until your current billing period ends on
+                    <strong>{{ activeSubscription.getCancelDate.toFormattedDateString }}</strong>. You may resume your subscription at no
+                    extra cost until the end of the billing period.
+                </div>
+            {% endif %}
+
+            <!-- Available plans -->
+            {% partial 'plans/tabs-content' resumeMode=1 %}
+        </div>
+    </div>
+{{ form_close() }}

@@ -1,13 +1,13 @@
 {% set monthlyPlans = subscribePlanList.monthlyPlans %}
 {% set yearlyPlans = subscribePlanList.yearlyPlans %}
 {% set hasMonthlyAndYearlyPlans = monthlyPlans and yearlyPlans %}
-{% set activePlan = user.membership.activePlan %}
+{% set activePlan = user.activeSubscription.plan %}
 
 {{ form_ajax('onSubscribe', { id: 'subscribeForm', class: 'form-horizontal is-subscribed' }) }}
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="pull-left {{ hasMonthlyAndYearlyPlans ? 'btn-table-align' }}">
-                Subscribe
+                Update Subscription
             </div>
 
             <!-- Plan tabs -->
@@ -17,11 +17,20 @@
         </div>
 
         <div class="panel-body spark-row-list">
-            <!-- Current Subscription (Active) -->
-            <div class="p-b">
-                You are currently subscribed to the
-                <strong>{{ activePlan.name }}</strong> plan.
-            </div>
+
+            {% if activePlan.isActive %}
+                <!-- Current Subscription (Active) -->
+                <div class="p-b">
+                    You are currently subscribed to the <strong>{{ activePlan.name }}</strong> plan.
+                </div>
+            {% else %}
+                <!-- Current Subscription (Archived) -->
+                <div class="alert alert-warning m-b">
+                    You are currently subscribed to the <strong>{{ activePlan.name }}</strong> plan.
+                    This plan has been discontinued, but you may continue your subscription to this plan as long as you wish.
+                    If you cancel your subscription and later want to begin a new subscription, you will need to choose from one of the active plans listed below.
+                </div>
+            {% endif %}
 
             <!-- Available plans -->
             {% partial 'plans/tabs-content' activePlan=activePlan %}

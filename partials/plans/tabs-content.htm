@@ -12,18 +12,18 @@
 <!-- Tab content -->
 <div class="tab-content">
     <div id="monthlyPlansContent" class="tab-pane active">
-        <table class="table table-borderless m-b-none">
+        <table class="table table-borderless m-b-0">
             <thead></thead>
             <tbody>
-                {% partial 'plans/table-items' plans=monthlyPlans activePlan=activePlan %}
+                {% partial 'plans/table-items' plans=monthlyPlans activePlan=activePlan resumeMode=resumeMode %}
             </tbody>
         </table>
     </div>
     <div id="yearlyPlansContent" class="tab-pane">
-        <table class="table table-borderless m-b-none">
+        <table class="table table-borderless m-b-0">
             <thead></thead>
             <tbody>
-                {% partial 'plans/table-items' plans=yearlyPlans activePlan=activePlan %}
+                {% partial 'plans/table-items' plans=yearlyPlans activePlan=activePlan resumeMode=resumeMode %}
             </tbody>
         </table>
     </div>

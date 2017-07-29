@@ -1,7 +1,7 @@
 {{ form_ajax('onUpdateConfirm') }}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Update Subscription</h4>
+        <h4 class="modal-title">Change Subscription</h4>
     </div>
     <div class="modal-body">
         <input type="hidden" name="selected_plan" value="{{ newPlan.id }}" />
@@ -10,11 +10,16 @@
             <p>
                 You are currently subscribed to <strong>{{ newPlan.name }}</strong>!
             </p>
+        {% elseif isUpgrade %}
+            <p>
+                Would you like to upgrade to the <strong>{{ newPlan.name }}</strong> plan?
+            </p>
+            <p>
+                The adjusted price for the first {{ newPlan.plan_type }} period will be {{ switchPrice|currency }}.
+            </p>
         {% else %}
             <p>
-                Are you sure you want to switch to the
-                <strong>{{ newPlan.name }}</strong>
-                plan?
+                Would you like to downgrade to the <strong>{{ newPlan.name }}</strong> plan?
             </p>
         {% endif %}
     </div>
@@ -27,8 +32,9 @@
         {% if not samePlan %}
             <button
                 class="btn btn-primary"
-                type="submit">
-                Yes, I'm sure!
+                type="submit"
+                data-attach-loading>
+                Yes please!
             </button>
         {% endif %}
     </div>

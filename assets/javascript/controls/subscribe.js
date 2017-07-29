@@ -9,12 +9,14 @@
     //
 
     var $form,
-        hasSubscription = false
+        hasSubscription = false,
+        isCancelled = false
 
     function init() {
         $form = $('#subscribeForm')
 
         hasSubscription = $form.hasClass('is-subscribed')
+        isCancelled = $form.hasClass('is-cancelled')
 
         setActivePlanFromPage()
     }
@@ -41,7 +43,7 @@
             plan = getPlanFromElement($el),
             $container = $el.closest('.plan-select-button')
 
-        if (!hasSubscription) {
+        if (!hasSubscription && !isCancelled) {
             $container.addClass('plan-selected')
 
             $('.plan-select-button')
@@ -55,6 +57,9 @@
 
         if (hasSubscription) {
             updateSubscription($el, plan)
+        }
+        else if (isCancelled) {
+            resumeSubscription($el, plan)
         }
         else {
             makePlanActive(plan)
@@ -86,6 +91,16 @@
         $el.ajaxModal({
             handler: 'onLoadUpdateConfirmForm',
             updatePartial: 'settings-subscribe/update-confirm-form',
+            extraData: {
+                selected_plan: plan.id
+            }
+        })
+    }
+
+    function resumeSubscription($el, plan) {
+        $el.ajaxModal({
+            handler: 'onLoadResumeConfirmForm',
+            updatePartial: 'settings-subscribe/resume-confirm-form',
             extraData: {
                 selected_plan: plan.id
             }
