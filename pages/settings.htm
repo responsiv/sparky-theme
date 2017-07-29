@@ -3,17 +3,57 @@ url = "/settings"
 layout = "settings"
 
 [account]
+redirect = "0"
 
 [resources]
 vars[activeSetting] = "profile"
 ==
+
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Profile Photo</div>
+
+        <div class="panel-body">
+            <form class="form-horizontal" role="form">
+                <!-- Photo Preview-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+
+                    <div class="col-md-6" id="partialSettingsProfilePhoto">
+                        {% partial 'settings/profile-photo' %}
+                    </div>
+                </div>
+
+                <!-- Update Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">&nbsp;</label>
+
+                    <div class="col-md-6">
+                        <label type="button" class="btn btn-primary btn-upload">
+                            <span>Select New Photo</span>
+
+                            <input
+                                type="file"
+                                name="avatar"
+                                data-request="onUpdate"
+                                data-request-files
+                                data-request-flash
+                                data-request-data="flash: 'Profile photo has been updated!'"
+                                data-request-update="'settings/profile-photo': '#partialSettingsProfilePhoto', 'nav/profile-photo': '#partialNavProfilePhoto'" />
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="panel panel-default">
     <div class="panel-heading">Contact Information</div>
 
     <div class="panel-body">
 
-        {{ form_ajax('onUpdate', { model: user, class: 'form-horizontal' }) }}
+        {{ form_ajax('onUpdate', { model: user, class: 'form-horizontal', flash: true }) }}
 
             <input type="hidden" name="flash" value="Your contact information has been updated!" />
 

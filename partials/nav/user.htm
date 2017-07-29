@@ -59,7 +59,7 @@
                 <li class="dropdown">
                     <!-- Avatar -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <img src="{{ user.getAvatarThumb(64, { mode: 'crop' }) }}" class="spark-nav-profile-photo m-r-xs">
+                        <span id="partialNavProfilePhoto">{% partial 'nav/profile-photo' %}</span>
                         <span class="caret"></span>
                     </a>
 
