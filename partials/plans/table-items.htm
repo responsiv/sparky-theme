@@ -37,9 +37,9 @@
 
         <!-- Trial days -->
         <td>
-            {% if plan.hasTrial %}
+            {% if plan.hasTrialPeriod %}
                 <div class="btn-table-align">
-                    {{ plan.policy.trial_period }} day trial
+                    {{ plan.getTrialPeriod }} day trial
                 </div>
             {% endif %}
         </td>

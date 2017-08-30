@@ -24,9 +24,8 @@
 
             {% if activeSubscription.isDelayCancelled %}
                 <div class="p-b-lg">
-                    The benefits of your subscription will continue until your current billing period ends on
-                    <strong>{{ activeSubscription.getCancelDate.toFormattedDateString }}</strong>. You may resume your subscription at no
-                    extra cost until the end of the billing period.
+                    The benefits of your subscription will continue until your current billing period ends on <strong>{{ activeSubscription.getCancelDate.toFormattedDateString }}</strong>.
+                    You may resume your subscription at no extra cost until the end of the billing period.
                 </div>
             {% endif %}
 

@@ -39,7 +39,7 @@
         {{ form_select_country('country', user.country_id, {
             emptyOption: '',
             class: 'form-control',
-            onChange: 'updatePlanPricing()'
+            onChange: onChangeCountry
         }) }}
     </div>
 </div>

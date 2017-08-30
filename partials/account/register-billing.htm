@@ -5,7 +5,7 @@
 
             <div class="panel-body">
                 <!-- Billing form -->
-                {% partial 'account/fields-billing' %}
+                {% partial 'account/fields-billing' onChangeCountry='updatePlanPricing()' %}
 
                 <!-- Tax / Price info -->
                 <div class="form-group">
