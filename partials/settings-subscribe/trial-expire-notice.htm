@@ -1,11 +1,12 @@
-{% if membership.isTrialActive %}
+{% if user.subscriptionIsTrial %}
     <div class="panel panel-warning">
         <div class="panel-heading">
             <i class="fa fa-btn fa-clock-o"></i>Free Trial
         </div>
 
         <div class="panel-body">
-            You are currently within your free trial period. Your trial will expire on <strong>{{ membership.trial_period_end.toFormattedDateString }}</strong>.
+            You are currently within your free trial period. Your trial will expire on
+            <strong>{{ user.subscriptionTrialEnd.toFormattedDateString|default('soon') }}</strong>.
         </div>
     </div>
 {% endif %}

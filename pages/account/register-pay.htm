@@ -11,10 +11,10 @@ layout = "default"
         <div class="col-md-8 col-md-offset-2">
             {% if invoice %}
                 {% if user.subscriptionIsTrial %}
-                    <div class="panel panel-default">
+                    <div class="panel panel-warning">
                         <div class="panel-heading">
                             <div class="pull-left {{ isCardOptional ? 'btn-table-align' }}"">
-                                Free trial period
+                                <i class="fa fa-btn fa-clock-o"></i>Free Trial
                             </div>
                             {% if isCardOptional %}
                                 <div class="pull-right" style="padding-top: 2px;">
@@ -24,24 +24,24 @@ layout = "default"
                             <div class="clearfix"></div>
                         </div>
                         <div class="panel-body">
-                            You are on a free trial, we will collect the payment {{ invoice.due_at.toFormattedDateString|default('soon') }}.
+                            You are on a free trial, we will collect the payment 
+                            <strong>{{ user.subscriptionTrialEnd.toFormattedDateString|default('soon') }}</strong>.
                         </div>
                     </div>
                 {% endif %}
                 {% if hasProfile or invoice.isPaymentProcessed %}
-                    <div class="panel panel-default">
+                    <div class="panel panel-success">
                         <div class="panel-heading">
                             Account set up complete
                         </div>
                         <div class="panel-body">
-                            <h4 class="text-success">
+                            <p class="text-success">
                                 {% if invoice.isPaymentProcessed %}
                                     This invoice has been paid. Thank-you!
                                 {% else %}
                                     Your account has been set up. Thank-you!
                                 {% endif %}
-                            </h4>
-                            <hr />
+                            </p>
                             <p>
                                 <a href="{{ 'dashboard'|page }}" class="btn btn-success">Go to dashboard</a>
                             </p>
