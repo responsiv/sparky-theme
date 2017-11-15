@@ -6,7 +6,7 @@
  * 
  * Data attributes:
  * - data-control="ajax-modal" - enables the ajax modal plugin
- * - data-handler="widget:pluginName" - October ajax request name
+ * - data-handler="onDoSomething" - October ajax request name
  * - data-update-partial="some partial" - Partial to popuplate the modal
  * - data-request-data="file_id: 1" - October ajax request data
  * - data-modal-class="modal-lg" - Modal class for styling

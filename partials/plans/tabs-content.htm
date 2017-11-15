@@ -1,6 +1,5 @@
 {% set monthlyPlans = subscribePlanList.monthlyPlans %}
 {% set yearlyPlans = subscribePlanList.yearlyPlans %}
-{% set hasMonthlyAndYearlyPlans = monthlyPlans and yearlyPlans %}
 
 <!-- Selected plan value -->
 <input type="hidden" name="selected_plan" value="{{ activePlan.id }}" data-error-alert="#planEmptyError" />
@@ -15,7 +14,7 @@
         <table class="table table-borderless m-b-0">
             <thead></thead>
             <tbody>
-                {% partial 'plans/table-items' plans=monthlyPlans activePlan=activePlan resumeMode=resumeMode %}
+                {% partial 'plans/table-items' plans=monthlyPlans activePlan=activePlan resumeMode=resumeMode showTrials=showTrials %}
             </tbody>
         </table>
     </div>
@@ -23,7 +22,7 @@
         <table class="table table-borderless m-b-0">
             <thead></thead>
             <tbody>
-                {% partial 'plans/table-items' plans=yearlyPlans activePlan=activePlan resumeMode=resumeMode %}
+                {% partial 'plans/table-items' plans=yearlyPlans activePlan=activePlan resumeMode=resumeMode showTrials=showTrials %}
             </tbody>
         </table>
     </div>
